@@ -18,7 +18,15 @@
         if($result){
             $msg = "User Created Successfully.";
         }
+
+
+    if(isset($msg) & !empty($msg)){
+        echo $msg;
     }
+    echo "<a href='logout.php'>Logout</a>";
+
+}
+else{
 ?>
 <html>
 <head>
@@ -38,11 +46,7 @@
     <div id="header">
         <p id="header_title"> Simple Form Header <p>
     </div>
-    <?php
-    if(isset($msg) & !empty($msg)){
-        echo $msg;
-    }
-    ?>
+
     <!--BEGIN #signup-form -->
     <form action="" method="POST">
     <div id="content">
@@ -133,5 +137,6 @@
         <p> @Golam Maruf </p>
     </div>
 </div>
+<?php } ?>
 </body>
 </html>

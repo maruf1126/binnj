@@ -14,8 +14,9 @@ $query = "SELECT * FROM `user` WHERE username='$username'";
 $result = mysql_query($query) or die(mysql_error());
 $count = mysql_num_rows($result);
 while($row=mysql_fetch_array($result))
-{ $id = $row['id'];
-  echo $id;
+{
+    $id = $row['id'];
+
 }
 $flag=0;
 
@@ -26,7 +27,7 @@ if (isset($_POST['start']) && $flag==0){
     $result = mysql_query($query);
     if ($result) {
         $msg = "In launch";
-        echo $msg;
+        echo '<div class="form-msg">'.$msg.'</div>';
     }
     $flag=1;
 }
@@ -38,22 +39,24 @@ if (isset($_POST['end'])){
     $result = mysql_query($query);
     if ($result) {
         $msg = "Launch end";
-        echo $msg;
+        echo '<div class="form-msg">'.$msg.'</div>';
     }
 }
 ?>
 <!DOCTYPE html>
-<head>
+<head xmlns="http://www.w3.org/1999/html">
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
 </head>
 <body>
 <h1>
+    <div class="welcome">
     <?php
     $username = $_SESSION['username'];
     echo "Hai " . $username . " ";
     echo "This is the Members Area"; ?>
+    </div>
 </h1>
-
+<div class="form">
 <form action="" method="post">
     <p id="time-start">
         <button id="start" name="start" type="submit">Start</button>
@@ -64,5 +67,8 @@ if (isset($_POST['end'])){
     </p>
 
 </form>
+</div>
 
-<p> <?php echo "<a href='logout.php'>Logout</a>"; ?> </p>
+<div class="logout">
+   <p> <?php echo "<a href='logout.php'>Logout</a>"; ?> </p>
+</div>

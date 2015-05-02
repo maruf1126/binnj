@@ -1,11 +1,20 @@
-<?php //Start the Session
-session_start();
+<?php
+/**
+ * Created by PhpStorm.
+ * User: GolamMorshed
+ * Date: 2015-05-02
+ * Time: 4:23 PM
+ */
 require('connect.php');
 
 if (isset($_POST['username']) and isset($_POST['password'])) {
 
     $username = $_POST['username'];
     $password = $_POST['password'];
+    if(strcmp($username,"admin")!=0){
+        echo "Invalid Login Name";
+        header("location: admin.php");
+    }
 
     $query = "SELECT * FROM `user` WHERE username='$username' and password='$password'";
 
@@ -14,39 +23,17 @@ if (isset($_POST['username']) and isset($_POST['password'])) {
     while($row=mysql_fetch_array($result))
     { $id = $row['id']; }
 
-
-    if ($count == 1) {
-        $_SESSION['username'] = $username;
-        $_SESSION['password'] = $id;
-
-
-    } else {
-
+    if ($count <=0) {
         echo "Invalid Login Credentials.";
+        header("location: admin.php");
+    }
+    else {
+        header("location: launch.php");
     }
 }
 
-if (isset($_SESSION['username']) && isset($_SESSION['password'])){
-    header("location: welcome.php");
-}
-else{
-// When the user visits the page first time, simple login form will be displayed.
 ?>
-<!DOCTYPE html>
-<head xmlns="http://www.w3.org/1999/html">
-    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
-</head>
-<body>
-<!-- Form for logging in the users -->
-
-<div class="register-form">
-    <?php
-    if (isset($msg) & !empty($msg)) {
-        echo $msg;
-    }
-    ?>
-    <h1>Login</h1>
-
+     <p> Enter admin user name and password </p>
     <form action="" method="POST">
         <p><label>User Name : </label>
             <input id="username" type="text" name="username" placeholder="username"/></p>
@@ -54,11 +41,5 @@ else{
         <p><label>Password&nbsp;&nbsp; : </label>
             <input id="password" type="password" name="password" placeholder="password"/></p>
 
-        <a class="btn" href="register.php">Register</a>
         <button class="btn" type="submit" name="submit" value="Login"> Login</button>
     </form>
-</div>
-<div class="lunch-btn"> <a class="btn" href="admin.php">Launch Time</a> </div>
-<?php } ?>
-</body>
-</html>

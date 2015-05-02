@@ -1,0 +1,16 @@
+#search{
+	width: 250px; margin: 0 auto; max-height: 150px; border: 1px solid #f4f4f4; overflow: hidden;
+}
+#text{
+	width: 250px; padding: 10px; border: 1px solid #f4f4f4; border-radius: 3px;
+}
+#searchtitle{
+	width: 250px; padding: 10px; background: #fff;
+}
+#searchtitle:hover{
+	background: #f4545f;
+}
+
+body{
+	background: rgb(213,206,166);
+}

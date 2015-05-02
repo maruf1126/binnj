@@ -14,8 +14,9 @@ $query = "SELECT * FROM `user` WHERE username='$username'";
 $result = mysql_query($query) or die(mysql_error());
 $count = mysql_num_rows($result);
 while($row=mysql_fetch_array($result))
-{ $id = $row['id'];
-  echo $id;
+{
+    $id = $row['id'];
+
 }
 $flag=0;
 
@@ -26,7 +27,7 @@ if (isset($_POST['start']) && $flag==0){
     $result = mysql_query($query);
     if ($result) {
         $msg = "In launch";
-        echo $msg;
+        echo "\n".$msg;
     }
     $flag=1;
 }

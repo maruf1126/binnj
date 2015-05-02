@@ -244,3 +244,14 @@ input.valid, select.valid{
 	width: 60px;
 	padding: 8px;
 }
+
+.lunch-btn{
+	padding: 7px;
+	border-radius: 5px;
+	text-decoration: none;
+	width: 100px;
+	position: relative;
+	left: 550px;
+	display: inline-block;
+	color: #FFF;
+}

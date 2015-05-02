@@ -33,7 +33,7 @@ else{
 // When the user visits the page first time, simple login form will be displayed.
 ?>
 <!DOCTYPE html>
-<head>
+<head xmlns="http://www.w3.org/1999/html">
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
 </head>
 <body>
@@ -55,10 +55,10 @@ else{
             <input id="password" type="password" name="password" placeholder="password"/></p>
 
         <a class="btn" href="register.php">Register</a>
-        <input class="btn" type="submit" name="submit" value="Login"/>
+        <button class="btn" type="submit" name="submit" value="Login"> Login</button>
     </form>
 </div>
-<div class=""><a class="btn" href="launch.php">Launch Time</a> </div>
+<div class="lunch-btn"> <a class="btn" href="launch.php">Launch Time</a> </div>
 <?php } ?>
 </body>
 </html>

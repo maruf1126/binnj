@@ -17,16 +17,28 @@ while($row=mysql_fetch_array($result))
 { $id = $row['id'];
   echo $id;
 }
+$flag=0;
 
-if (isset($_POST['start'])){
+if (isset($_POST['start']) && $flag==0){
     $start = $_POST['start'];
-    $date = new DateTime(null);
-    $time=$date->getTimestamp();
-    $query = "INSERT INTO  `time_calculation` (id,start,end,launch_start,launch_end)VALUES ('$id',NULL,NULL '$time', NULL )";
+    $query = "INSERT INTO  `time_calculation` (id,date,launch_start)VALUES ('$id',CURDATE(),now())";
     //$query = "UPDATE `time_calculation` SET launch_start='$start' id='$id' WHERE 1";
     $result = mysql_query($query);
     if ($result) {
-        $msg = "User Created Successfully.";
+        $msg = "In launch";
+        echo $msg;
+    }
+    $flag=1;
+}
+if (isset($_POST['end'])){
+    $end = $_POST['end'];
+     $query="UPDATE `time_calculation` SET launch_end=now() WHERE id='" .$id . "' AND date=CURDATE()";
+    //$query = "INSERT INTO  `time_calculation` (id,date,launch_start)VALUES ('$id',CURDATE(),now())";
+    //$query = "UPDATE `time_calculation` SET launch_start='$start' id='$id' WHERE 1";
+    $result = mysql_query($query);
+    if ($result) {
+        $msg = "Launch end";
+        echo $msg;
     }
 }
 ?>
@@ -53,4 +65,4 @@ if (isset($_POST['start'])){
 
 </form>
 
-<p> <?php echo "<a href='index.php'>Logout</a>"; ?> </p>
+<p> <?php echo "<a href='logout.php'>Logout</a>"; ?> </p>

@@ -6,8 +6,12 @@
  * Time: 9:08 PM
  */
 
+//session_destroy();
 
 session_start();
-
-    header("Location: index.php");
+if(session_destroy()) // Destroying All Sessions
+{
+    header("Location: index.php"); // Redirecting To Home Page
+}
+?>
 ?>

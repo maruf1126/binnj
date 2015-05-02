@@ -1,5 +1,5 @@
 <?php //Start the Session
-
+session_start();
 require('connect.php');
 
 if (isset($_POST['username']) and isset($_POST['password'])) {
@@ -55,9 +55,10 @@ else{
             <input id="password" type="password" name="password" placeholder="password"/></p>
 
         <a class="btn" href="register.php">Register</a>
-        <input class="btn register" type="submit" name="submit" value="Login"/>
+        <input class="btn" type="submit" name="submit" value="Login"/>
     </form>
 </div>
+<div class=""><a class="btn" href="launch.php">Launch Time</a> </div>
 <?php } ?>
 </body>
 </html>

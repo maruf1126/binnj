@@ -232,18 +232,20 @@ input.valid, select.valid{
 }
 
 .register-form form input{padding: 5px;}
-.register-form .btn{background: #726E6E;
+.register-form .btn{
+	background: #726E6E;
 	padding: 7px;
 	border-radius: 5px;
 	text-decoration: none;
 	width: 50px;
-	display: inline-block;
-	color: #FFF;}
+	color: #FFF;
+	border: none;
+}
 
 .register-form .register{
 	border: 0;
 	width: 60px;
-	padding: 8px;
+	padding: 7px;
 }
 
 .lunch-btn{
@@ -256,6 +258,7 @@ input.valid, select.valid{
 	left: 550px;
 	display: inline-block;
 	color: #FFF;
+	background-color: #726E6E;
 }
 
 .welcome{
@@ -268,8 +271,8 @@ input.valid, select.valid{
 }
 .form-msg{
 	position: relative;
-	top: 60px;
-	color: #7f1116;
+	top: 110px;
+	color: #EF1037;
 	text-align: center;
 
 }
@@ -277,3 +280,13 @@ input.valid, select.valid{
 	position: relative;
 	text-align: center;
 }
+
+.user-lunch{
+	position: relative;
+	top: 50px;
+	left: 250px;
+	width: 60%;
+	text-align: center;
+
+}
+

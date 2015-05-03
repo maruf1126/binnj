@@ -14,3 +14,31 @@
 body{
 	background: rgb(213,206,166);
 }
+.user-date {
+	width:800px;
+	margin: 10px auto;
+	background-color: #F5F5DC;
+	padding:20px;
+}
+.user-info{
+	position: relative;
+	left: 45%;
+	width: 120px;
+	text-align: center;
+}
+.my-calendar {
+	position: relative;
+	left: 40%;
+	width: 200px;
+	text-align: center;
+	border: none;
+}
+.submit-user{
+	position: relative;
+	text-align: center;
+}
+.name-user{
+	text-align: center;
+	position: relative;
+	top: 40px;
+}

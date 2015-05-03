@@ -13,7 +13,7 @@
         $phone = $_POST['phone'];
         $password = $_POST['password'];
 
-        $query = "INSERT INTO `user` (username, password, email,address,city,country, state, postalcode, phone) VALUES ('$username', '$password', '$email', '$address', '$city', '$country', '$state', '$postalcode', '$phone')";
+        $query = "INSERT INTO `user` (username,fullname,password, email,address,city,country, state, postalcode, phone) VALUES ('$username','$fullname','$password', '$email', '$address', '$city', '$country', '$state', '$postalcode', '$phone')";
         $result = mysql_query($query);
         if($result){
             $msg = "User Created Successfully.";

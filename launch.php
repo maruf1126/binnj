@@ -154,7 +154,7 @@ else {
 
  <div id = "return">
      <a class="btn" href="launch.php"> Back </a>
-     <a class="btn" href="logout.php"> logout </a>
+     <a class="btn" href="logout.php"> Logout </a>
 
 </body>
 </html>

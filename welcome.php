@@ -7,7 +7,6 @@
  */
 session_start();
 require('connect.php');
-// If the values are posted, insert them into the database.
 $username = $_SESSION['username'];
 $query = "SELECT * FROM `user` WHERE username='$username'";
 
@@ -25,7 +24,7 @@ if (isset($_POST['start']) && $flag == 0) {
     $result = mysql_query($query) or die(mysql_error());
     $count = mysql_num_rows($result);
     if ($count >= 1) {
-        $msg = "Already started";
+        $msg = "Already Started Today";
         echo '<div class="form-msg">' . $msg . '</div>';
     } else {
         $query = "INSERT INTO  `time_calculation` (id,date,launch_start)VALUES ('$id',CURDATE(),now())";
@@ -49,12 +48,10 @@ if (isset($_POST['end'])) {
     }
     //echo $end_time;
     if ($end_time>0) {
-        $msg = "Already Ended";
+        $msg = "Already Ended Today";
         echo '<div class="form-msg">' . $msg . '</div>';
     } else {
         $query = "UPDATE `time_calculation` SET launch_end=now() WHERE id='" . $id . "' AND date=CURDATE()";
-        //$query = "INSERT INTO  `time_calculation` (id,date,launch_start)VALUES ('$id',CURDATE(),now())";
-        //$query = "UPDATE `time_calculation` SET launch_start='$start' id='$id' WHERE 1";
         $result = mysql_query($query);
         if ($result) {
             $msg = "Launch end";
@@ -73,8 +70,8 @@ if (isset($_POST['end'])) {
         <div class="welcome">
             <?php
             $username = $_SESSION['username'];
-            echo "Hai " . $username . " ";
-            echo "This is the Members Area"; ?>
+            echo "Hello " . $username . " ";
+            echo "This is Lunch Time Calculator"; ?>
         </div>
     </h1>
     <div class="form">

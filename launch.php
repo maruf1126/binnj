@@ -18,36 +18,40 @@ if (isset($_POST['users'])) {
 
     $result = mysql_query($query) or die(mysql_error());
     $count = mysql_num_rows($result);
-    ?>
-    <div class="wrapper-date"> <span class="user-span">
-        <?php
-    while ($row = mysql_fetch_array($result)) {
-        $diff = round(abs(strtotime($row['launch_start']) - strtotime($row['launch_end'])));
-        if($diff>=86400){
-            echo "<p class='user-date'>"." Lunch Duration Invalid </p>";
-        } // more than 24 hour
-        elseif ($diff >= 3600){
-            $hour = round($diff / 3600);
-            $minute = (($diff / 60) % 60);
-            echo "<p class='user-date'>" . $row['date'] . " Lunch Duration " . $hour . " Hour " . $minute . " Minute </p>";
-
-        } else {
-            $min = $diff / 60;
-            echo "<p class='user-date'>" . $row['date'] . " Lunch Duration " . round($min) . " Minute </p>";
-        }
-        echo "";
-
+    if ($count <= 0) {
+        echo "No entry found";
     }
-    ?>
+    else {
+        ?>
+        <div class="wrapper-date"> <span class="user-span">
+        <?php
+        while ($row = mysql_fetch_array($result)) {
+            $diff = round(abs(strtotime($row['launch_start']) - strtotime($row['launch_end'])));
+            if ($diff >= 86400) {
+                echo "<p class='user-date'>" . " Lunch Duration Invalid </p>";
+            } // more than 24 hour
+            elseif ($diff >= 3600) {
+                $hour = round($diff / 3600);
+                $minute = (($diff / 60) % 60);
+                echo "<p class='user-date'>" . $row['date'] . " Lunch Duration " . $hour . " Hour " . $minute . " Minute </p>";
+
+            } else {
+                $min = $diff / 60;
+                echo "<p class='user-date'>" . $row['date'] . " Lunch Duration " . round($min) . " Minute </p>";
+            }
+            echo "";
+
+        }
+        ?>
             </span>
-    </div>
+        </div>
 
-<?php
-
+    <?php
+    }
 }
 else {
-require('user_lunch.php');
-?>
+    require('user_lunch.php');
+    ?>
 
 <div style="text-align: center; width: 500px; margin: 0 auto;">
     <h1>Launch Time Search </h1>
@@ -147,5 +151,10 @@ require('user_lunch.php');
 
 </div>
 <?php } ?>
+
+ <div id = "return">
+     <a class="btn" href="launch.php"> Back </a>
+     <a class="btn" href="logout.php"> Logout </a>
+
 </body>
 </html>

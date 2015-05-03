@@ -1,7 +1,7 @@
 <?php
 	require('connect.php');
     // If the values are posted, insert them into the database.
-    if (isset($_POST['username']) && isset($_POST['password'])){
+    if (isset($_POST['username']) && !empty($_POST["username"]) && isset($_POST['password'])&& !empty($_POST["password"])){
         $username = $_POST['username'];
         $fullname = $_POST['fullname'];
 		$email = $_POST['email'];
@@ -124,8 +124,6 @@ else{
     </div>
     </form>
     <div id="wrapper">
-
-
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand"><a href="index.php">Home</a></li>

@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<head xmlns="http://www.w3.org/1999/html">
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+</head>
+<body>
 <?php
 /**
  * Created by PhpStorm.
@@ -6,34 +11,27 @@
  * Time: 4:23 PM
  */
 require('connect.php');
-
 if (isset($_POST['username']) and isset($_POST['password'])) {
-
     $username = $_POST['username'];
     $password = $_POST['password'];
-    if(strcmp($username,"admin")!=0){
-        echo "Invalid Login Name";
-        header("location: admin.php");
-    }
-
-    $query = "SELECT * FROM `user` WHERE username='$username' and password='$password'";
-
+    $query = "SELECT * FROM `user` WHERE username='$username' AND password='$password' AND admin=1";
     $result = mysql_query($query) or die(mysql_error());
     $count = mysql_num_rows($result);
-    while($row=mysql_fetch_array($result))
-    { $id = $row['id']; }
-
-    if ($count <=0) {
-        echo "Invalid Login Credentials.";
-        header("location: admin.php");
+    while ($row = mysql_fetch_array($result)) {
+        $id = $row['id'];
     }
-    else {
+
+    if ($count <= 0) {
+        header("location: admin.php");
+    } else {
         header("location: launch.php");
     }
 }
 
 ?>
-     <p> Enter admin user name and password </p>
+<div class="admin-login">
+    <p> Enter admin user name and password </p>
+
     <form action="" method="POST">
         <p><label>User Name : </label>
             <input id="username" type="text" name="username" placeholder="username"/></p>
@@ -43,3 +41,5 @@ if (isset($_POST['username']) and isset($_POST['password'])) {
 
         <button class="btn" type="submit" name="submit" value="Login"> Login</button>
     </form>
+</div>
+</body>

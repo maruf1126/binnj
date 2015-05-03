@@ -22,8 +22,8 @@ body{
 }
 .user-info{
 	position: relative;
-	left: 45%;
-	width: 120px;
+	left: 43%;
+	width: 150px;
 	text-align: center;
 }
 .my-calendar {
@@ -41,4 +41,17 @@ body{
 	text-align: center;
 	position: relative;
 	top: 40px;
+}
+
+.btn{
+	background: #726E6E;
+	padding: 7px;
+	text-decoration: none;
+	width: 50px;
+	color: #FFF;
+	border: none;
+	position: relative;
+	top: 10px;
+	left: 45%;
+	margin: 5px;
 }

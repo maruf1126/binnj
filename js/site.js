@@ -59,9 +59,9 @@ $(document).ready(function() {
         if (!error_free){
             event.preventDefault(); 
         }
-        /*else{
-            alert('No errors: Form will be submitted');
-        }*/
+        else{
+            alert('Form will be submitted');
+        }
 
     }
     );

@@ -23,7 +23,10 @@ if (isset($_POST['users'])) {
         <?php
     while ($row = mysql_fetch_array($result)) {
         $diff = round(abs(strtotime($row['launch_start']) - strtotime($row['launch_end'])));
-        if ($diff >= 3600) {
+        if($diff>=86400){
+            echo "<p class='user-date'>"." Lunch Duration Invalid </p>";
+        } // more than 24 hour
+        elseif ($diff >= 3600){
             $hour = round($diff / 3600);
             $minute = (($diff / 60) % 60);
             echo "<p class='user-date'>" . $row['date'] . " Lunch Duration " . $hour . " Hour " . $minute . " Minute </p>";

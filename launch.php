@@ -25,6 +25,8 @@ if (isset($_POST['users'])) {
         ?>
         <div class="wrapper-date"> <span class="user-span">
         <?php
+        $total_hour=0;
+        $total_min=0;
         while ($row = mysql_fetch_array($result)) {
             $diff = round(abs(strtotime($row['launch_start']) - strtotime($row['launch_end'])));
             if ($diff >= 86400) {
@@ -33,15 +35,24 @@ if (isset($_POST['users'])) {
             elseif ($diff >= 3600) {
                 $hour = round($diff / 3600);
                 $minute = (($diff / 60) % 60);
+                $total_hour=$total_hour+$hour;
+                $total_min=$total_min+$minute;
                 echo "<p class='user-date'>" . $row['date'] . " Lunch Duration " . $hour . " Hour " . $minute . " Minute </p>";
 
             } else {
                 $min = $diff / 60;
+                $total_min=$total_min+round($min);
                 echo "<p class='user-date'>" . $row['date'] . " Lunch Duration " . round($min) . " Minute </p>";
             }
             echo "";
 
         }
+        if($total_min>=60)
+        {
+            $total_hour=$total_hour+floor($total_min/60);
+            $total_min=($total_min%60);
+        }
+        echo "<p class='user-date-final'> Employee Total Lunch Hour : " . $total_hour . " Hour " . $total_min . " Minute </p>";
         ?>
             </span>
         </div>

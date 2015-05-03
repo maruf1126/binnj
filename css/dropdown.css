@@ -20,6 +20,13 @@ body{
 	background-color: #F5F5DC;
 	padding:20px;
 }
+.user-date-final{
+	width:800px;
+	margin: 10px auto;
+	background-color: #F5EB3B;
+	padding:20px;
+}
+
 .user-info{
 	position: relative;
 	left: 43%;

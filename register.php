@@ -44,7 +44,7 @@ else{
 <body>
 <div id="container">
     <div id="header">
-        <p id="header_title"> Simple Form Header <p>
+        <p id="header_title"> Welcome To binnj  <p>
     </div>
 
     <!--BEGIN #signup-form -->
@@ -56,7 +56,7 @@ else{
             <div id="signup-inner">
 
                 <div class="clearfix" id="header">
-                    <h1>User Registration From </h1>
+                    <h1>Registration From </h1>
                 </div>
                 <p>Please complete the fields below, ensuring you use a valid email address as you will be sent a
                     validation
@@ -64,22 +64,25 @@ else{
 
                 <form id="contact" action="" method="post">
                     <p>
-                        <label>User Name : </label>
-                        <input id="username" type="text" name="username" placeholder="username" /></p>
-                    <p>
-                        <label for="fullname"> Name *</label>
-                        <input id="fullname" type="text" name="fullname" placeholder="Your Full Name" value="" class="validate"/>
+                        <label>User Name * </label>
+                        <input id="username" type="text" name="username" placeholder="username" />
                         <span class="error">This field is required</span>
+                    </p>
+                    <p>
+                        <label for="fullname"> Name </label>
+                        <input id="fullname" type="text" name="fullname" placeholder="Your Full Name" value="" class="validate"/>
+
                     </p>
 
                     <p>
-                        <label for="email">Email *</label>
+                        <label for="email">Email </label>
                         <input id="email" type="text" name="email" placeholder="Your Email" value="" class="validate"/>
                         <span class="error">A valid email address is required</span>	
                     </p>
                     <p>
-                        <label>Password&nbsp;&nbsp; : </label>
+                        <label>Password*&nbsp;&nbsp;  </label>
                         <input id="password" type="password" name="password" placeholder="password" /></p>
+                        <span class="error">This field is required</span>
                     <p>
                         <label for="address">Address</label>
                         <input id="address" type="text" name="address" placeholder="Your Address" value=""/>

@@ -22,24 +22,46 @@ $flag=0;
 
 if (isset($_POST['start']) && $flag==0){
     $start = $_POST['start'];
-    $query = "INSERT INTO  `time_calculation` (id,date,launch_start)VALUES ('$id',CURDATE(),now())";
-    //$query = "UPDATE `time_calculation` SET launch_start='$start' id='$id' WHERE 1";
-    $result = mysql_query($query);
-    if ($result) {
-        $msg = "In launch";
+    $query = "SELECT * FROM  `time_calculation` WHERE id='" .$id . "' AND date=CURDATE()";
+    $result = mysql_query($query) or die(mysql_error());
+    $count = mysql_num_rows($result);
+    if($count>=1){
+        $msg = "Already started";
         echo '<div class="form-msg">'.$msg.'</div>';
     }
-    $flag=1;
+    else {
+        $query = "INSERT INTO  `time_calculation` (id,date,launch_start)VALUES ('$id',CURDATE(),now())";
+        //$query = "UPDATE `time_calculation` SET launch_start='$start' id='$id' WHERE 1";
+        $result = mysql_query($query);
+        if ($result) {
+            $msg = "In launch";
+            echo '<div class="form-msg">' . $msg . '</div>';
+        }
+        $flag = 1;
+    }
 }
+
 if (isset($_POST['end'])){
     $end = $_POST['end'];
-     $query="UPDATE `time_calculation` SET launch_end=now() WHERE id='" .$id . "' AND date=CURDATE()";
-    //$query = "INSERT INTO  `time_calculation` (id,date,launch_start)VALUES ('$id',CURDATE(),now())";
-    //$query = "UPDATE `time_calculation` SET launch_start='$start' id='$id' WHERE 1";
-    $result = mysql_query($query);
-    if ($result) {
-        $msg = "Launch end";
+    $query = "SELECT * FROM  `time_calculation` WHERE id='" .$id . "' AND date=CURDATE()";
+    $result = mysql_query($query) or die(mysql_error());
+    $count = mysql_num_rows($result);
+    while($row=mysql_fetch_array($result))
+    { $end_time = $row['launch_end']; }
+
+    if($end_time){
+        $msg = "Already Ended";
         echo '<div class="form-msg">'.$msg.'</div>';
+    }
+    else {
+        $query = "UPDATE `time_calculation` SET launch_end=now() WHERE id='" . $id . "' AND date=CURDATE()";
+        //$query = "INSERT INTO  `time_calculation` (id,date,launch_start)VALUES ('$id',CURDATE(),now())";
+        //$query = "UPDATE `time_calculation` SET launch_start='$start' id='$id' WHERE 1";
+        $result = mysql_query($query);
+        if ($result) {
+            $msg = "Launch end";
+            echo '<div class="form-msg">' . $msg . '</div>';
+        }
     }
 }
 ?>

@@ -19,7 +19,7 @@ if (isset($_POST['users'])) {
     $result = mysql_query($query) or die(mysql_error());
     $count = mysql_num_rows($result);
     if ($count <= 0) {
-        echo "No entry found";
+        echo "<p class='user-date'> Entry Not Found </p>";
     }
     else {
         ?>

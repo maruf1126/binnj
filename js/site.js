@@ -60,7 +60,7 @@ $(document).ready(function() {
             event.preventDefault(); 
         }
         else{
-            alert('No errors: Form will be submitted');
+            alert('Form will be submitted');
         }
 
     }

@@ -54,7 +54,7 @@ if (isset($_POST['end'])) {
         $query = "UPDATE `time_calculation` SET launch_end=now() WHERE id='" . $id . "' AND date=CURDATE()";
         $result = mysql_query($query);
         if ($result) {
-            $msg = "Launch end";
+            $msg = "Launch ended";
             echo '<div class="form-msg">' . $msg . '</div>';
         }
     }

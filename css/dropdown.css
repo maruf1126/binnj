@@ -58,8 +58,21 @@ body{
 	color: #FFF;
 	border: none;
 	position: relative;
+	top: -9px;
+	left: 47%;
+	margin: 5px;
+}
+
+.btn2{
+	background: #726E6E;
+	padding: 7px;
+	text-decoration: none;
+	width: 50px;
+	color: #FFF;
+	border: none;
+	position: relative;
 	top: 10px;
-	left: 45%;
+	left: 42%;
 	margin: 5px;
 }
 

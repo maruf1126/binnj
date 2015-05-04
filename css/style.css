@@ -276,6 +276,13 @@ input.valid, select.valid{
 	text-align: center;
 
 }
+.form-msg-2{
+	position: relative;
+	top: 100px;
+	color: #EF1037;
+	text-align: center;
+
+}
 .logout{
 	position: relative;
 	text-align: center;

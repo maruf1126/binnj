@@ -21,8 +21,7 @@ if (isset($_POST['username']) and isset($_POST['password'])) {
 
 
     } else {
-
-        echo "Invalid Login Credentials.";
+        echo '<div class="form-msg-2">Invalid Login user name or password</div>';
     }
 }
 

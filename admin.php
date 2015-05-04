@@ -22,7 +22,8 @@ if (isset($_POST['username']) and isset($_POST['password'])) {
     }
 
     if ($count <= 0) {
-        header("location: admin.php");
+        echo '<div class="form-msg-2">Invalid admin user name or password</div>';
+        //header("location: admin.php");
     } else {
         header("location: launch.php");
     }

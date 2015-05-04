@@ -71,7 +71,7 @@ if (isset($_POST['end'])) {
             <?php
             $username = $_SESSION['username'];
             echo "Hello " . $username . " ";
-            echo "This is Lunch Time Calculator"; ?>
+            echo "This is Lunch Time Log"; ?>
         </div>
     </h1>
     <div class="form">

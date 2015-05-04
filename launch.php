@@ -7,24 +7,34 @@
 
 <?php
 
-if (isset($_POST['users'])) {
+if (isset($_POST['users']) && isset($_POST['month']) && isset($_POST['year']) && !empty($_POST['users']) && !empty($_POST['month']) && !empty($_POST['year'])) {
     require('connect.php');
     $username = $_POST['users'];
     $month = $_POST['month'];
     $year = $_POST['year'];
+    $query = "SELECT * FROM `user` WHERE id='$username'";
+    $result = mysql_query($query) or die(mysql_error());
+    while ($row = mysql_fetch_array($result)) {
+        $fullname = $row['fullname'];
+    }
 
     $query = "SELECT * FROM `time_calculation` WHERE id='$username' AND MONTH(`date`)='$month'
    AND YEAR(`date`)='$year' ORDER BY date ASC";
 
     $result = mysql_query($query) or die(mysql_error());
     $count = mysql_num_rows($result);
+    $dateObj = DateTime::createFromFormat('!m', $month);
+    $monthName = $dateObj->format('F');
+    echo "<h3 class='user-date'> " . $fullname . "  Launch hours for " . $monthName . " , " . $year . " </h3>";
+
     if ($count <= 0) {
-        echo "No entry found";
-    }
-    else {
+        echo "<p class='user-date'> Entry Not Found </p>";
+    } else {
         ?>
         <div class="wrapper-date"> <span class="user-span">
         <?php
+        $total_hour = 0;
+        $total_min = 0;
         while ($row = mysql_fetch_array($result)) {
             $diff = round(abs(strtotime($row['launch_start']) - strtotime($row['launch_end'])));
             if ($diff >= 86400) {
@@ -33,23 +43,34 @@ if (isset($_POST['users'])) {
             elseif ($diff >= 3600) {
                 $hour = round($diff / 3600);
                 $minute = (($diff / 60) % 60);
+                $total_hour = $total_hour + $hour;
+                $total_min = $total_min + $minute;
                 echo "<p class='user-date'>" . $row['date'] . " Lunch Duration " . $hour . " Hour " . $minute . " Minute </p>";
 
             } else {
                 $min = $diff / 60;
+                $total_min = $total_min + round($min);
                 echo "<p class='user-date'>" . $row['date'] . " Lunch Duration " . round($min) . " Minute </p>";
             }
             echo "";
 
         }
+        if ($total_min >= 60) {
+            $total_hour = $total_hour + floor($total_min / 60);
+            $total_min = ($total_min % 60);
+        }
+        echo "<p class='user-date-final'> " . $fullname . " Total Lunch Hour : " . $total_hour . " Hour " . $total_min . " Minute </p>";
         ?>
             </span>
         </div>
 
     <?php
-    }
-}
-else {
+    } ?>
+    <div id="return">
+        <a class="btn2" href="launch.php"> Back </a>
+    </div>
+<?php
+} else {
     require('user_lunch.php');
     ?>
 
@@ -152,9 +173,8 @@ else {
 </div>
 <?php } ?>
 
- <div id = "return">
-     <a class="btn" href="launch.php"> Back </a>
-     <a class="btn" href="logout.php"> Logout </a>
-
+<div id="return">
+    <a class="btn" href="logout.php"> Logout </a>
+</div>
 </body>
 </html>

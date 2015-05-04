@@ -225,7 +225,7 @@ input.valid, select.valid{
 	text-align: center;
 	padding: 10px;
 	color: #fff;
-	background : #c4c4c4;
+	background : #949689;
 	border-radius: 10px;
 	-webkit-border-radius:10px;
 	-moz-border-radius:10px;
@@ -233,7 +233,7 @@ input.valid, select.valid{
 
 .register-form form input{padding: 5px;}
 .register-form .btn{
-	background: #726E6E;
+	background: #5D5959;
 	padding: 7px;
 	border-radius: 5px;
 	text-decoration: none;
@@ -252,7 +252,7 @@ input.valid, select.valid{
 	padding: 7px;
 	border-radius: 5px;
 	text-decoration: none;
-	width: 100px;
+	width: 150px;
 	position: relative;
 	top:120px;
 	left: 550px;
@@ -272,6 +272,13 @@ input.valid, select.valid{
 .form-msg{
 	position: relative;
 	top: 110px;
+	color: #EF1037;
+	text-align: center;
+
+}
+.form-msg-2{
+	position: relative;
+	top: 100px;
 	color: #EF1037;
 	text-align: center;
 
@@ -302,4 +309,9 @@ input.valid, select.valid{
 	border-radius: 10px;
 	-webkit-border-radius:10px;
 	-moz-border-radius:10px;
+}
+
+.lunch-btn a{
+	color: #FFFFFF;
+	text-align: center;
 }

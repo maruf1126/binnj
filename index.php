@@ -21,8 +21,7 @@ if (isset($_POST['username']) and isset($_POST['password'])) {
 
 
     } else {
-
-        echo "Invalid Login Credentials.";
+        echo '<div class="form-msg-2">Invalid Login user name or password</div>';
     }
 }
 
@@ -58,7 +57,7 @@ else{
         <button class="btn" type="submit" name="submit" value="Login"> Login</button>
     </form>
 </div>
-<div class="lunch-btn"> <a class="btn" href="admin.php">Launch Time</a> </div>
+<div class="lunch-btn"> <a class="btn" href="admin.php">Check Launch Time</a> </div>
 <?php } ?>
 </body>
 </html>
